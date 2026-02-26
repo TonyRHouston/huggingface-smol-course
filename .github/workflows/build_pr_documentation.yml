@@ -1,12 +1,9 @@
 name: Build PR Documentation
-
 on:
-  pull_request:
-
+  workflow_dispatch: {}
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
-
 jobs:
   build:
     uses: huggingface/doc-builder/.github/workflows/build_pr_documentation.yml@main
@@ -17,4 +14,4 @@ jobs:
       package_name: smol-course
       path_to_docs: smol-course/units/
       additional_args: --not_python_module
-      languages: en es ja ko pt-br vi 
+      languages: en es ja ko pt-br vi
